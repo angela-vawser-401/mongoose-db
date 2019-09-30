@@ -4,21 +4,19 @@ const mongoose = require('mongoose');
 
 connect();
 
-const Food = require('./lib/model/food');
+const Dog = require('./lib/model/dog');
 
-Food.create({
-  name: 'Kimbap',
-  category: {
-    level: 'easy'
-  },
-  countryOfOrigin: 'Korea',
-  servings: 1,
-  canBeVegetarian: true,
-  course: ['entree'],
+Dog.create({
+  breed: 'Jindo',
+  temperment: 'Alert, Intelligent, Bold',
+  group: 'Foundation Stock Service',
+  countryOfOrigin: 'South Korea',
+  lifespan: 14,
+  hypoallergenic: false
 })
 
-  .then(createdFood => {
-    console.log(createdFood);
+  .then(dogs => {
+    console.log(dogs);
   })
   .then(() => {
     mongoose.disconnect();

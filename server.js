@@ -1,49 +1,50 @@
 require('dotenv').config();
 require('./lib/connect')();
+
 const express = require('express');
 const app = express();
-const Food = require('./lib/model/food');
+const Dog = require('./lib/model/dog');
 
 app.use(express.json());
 
-app.get('/api/food', (req, res, next) => {
-  Food.find()
-    .then(food => {
-      res.json(food);
+app.get('/api/dogs', (req, res, next) => {
+  Dog.find()
+    .then(dogs => {
+      res.json(dogs);
     })
     .catch(next);
 });
 
-app.get('/api/food/:id', (req, res, next) => {
-  Food.findById(req.params.id)
-    .then(food => {
-      res.json(food);
+app.get('/api/dogs/:id', (req, res, next) => {
+  Dog.findById(req.params.id)
+    .then(dogs => {
+      res.json(dogs);
     })
     .catch(next);
 });
 
-app.post('/api/food', (req, res, next) => {
-  Food.create(req.body)
-    .then(food => {
-      res.json(food);
+app.post('/api/dogs', (req, res, next) => {
+  Dog.create(req.body)
+    .then(dogs => {
+      res.json(dogs);
     })
     .catch(next);
 });
 
-app.put('/api/food/:id', (req, res, next) => {
-  Food.findByIdAndUpdate(
+app.put('/api/dogs/:id', (req, res, next) => {
+  Dog.findByIdAndUpdate(
     req.params.id,
     req.body,
     { new: true }
   )
-    .then(food => {
-      res.json(food);
+    .then(dogs => {
+      res.json(dogs);
     })
     .catch(next);
 });
 
-app.delete('/api/food/:id', (req, res, next) => {
-  Food.findByIdAndRemove(req.params.id)
+app.delete('/api/dogs/:id', (req, res, next) => {
+  Dog.findByIdAndRemove(req.params.id)
     .then(removed => {
       res.json(removed);
     })
